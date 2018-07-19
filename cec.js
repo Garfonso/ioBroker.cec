@@ -447,7 +447,7 @@ function NODECec (clientName) {
 
         switch (msg.opcode) {
             case CEC.CEC_OPCODE.NONE:
-                if (g_initCount < 1 && msg.source===msg.target) {
+                if (g_initCount < 1 && msg.source===msg.target) { //this may happen multiple time, if first address of type is already taken.
                     ownLogicalAddress.c = msg.source;
                     ownLogicalAddress.i = parseInt(msg.source, 16);
                 }
@@ -609,7 +609,7 @@ function NODECec (clientName) {
             case 'waiting for input':
                 adapter.log.debug('**** waiting for input');
                 if (g_initCount === 0) {
-                    g_initCount = 1;
+                    g_initCount = 1; //have received our own logical address in onMessage.
                     setTimeout(listActiveDevices, 200);
                 } else {
                     that.popWaitingForInput();

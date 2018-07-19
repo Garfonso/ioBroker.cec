@@ -524,8 +524,8 @@ function NODECec (clientName) {
                 break;
 
             case CEC.CEC_OPCODE.REPORT_AUDIO_STATUS:
-                cecDevices.setMute(msg.source, msg.args[0] & 0x80);
-                cecDevices.setVolume(msg.source, msg.args[0] & 0x7F);
+                cecDevices.setMute(msg.source, msg.args[0] & CEC.CEC_AUDIO_STATUS.MUTE_STATUS_MASK);
+                cecDevices.setVolume(msg.source, msg.args[0] & CEC.CEC_AUDIO_STATUS.VOLUME_STATUS_MASK);
                 break;
 
             case CEC.CEC_OPCODE.DEVICE_VENDOR_ID:

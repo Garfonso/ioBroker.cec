@@ -12,9 +12,11 @@ var cec,
     ownLogicalAddress = { i: -1, c: 'e' };
 
 var orOSDName = 'ioBroker';
+var orType = 'r';
 
 function buildOrOSDName() {
     orOSDName = adapter.config.name || orOSDName;
+    orType = adapter.config.type || 'r';
     //if (adapter.config.name != orOSDName) {
     //    orOSDName = adapter.config.name;
     //    return;
@@ -752,7 +754,7 @@ function main() {
     createRootObjects();
 
     cec = new NODECec();
-    cec.start('-d 8 -t r -o ' + orOSDName);
+    cec.start('-d 8 -t ' + orType + ' -o ' + orOSDName);
 
     adapter.subscribeStates('*');
 }

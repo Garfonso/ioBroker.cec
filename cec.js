@@ -349,7 +349,7 @@ function NODECec (clientName) {
         }
         lastSnd = msg;
         that.client.stdin.write(msg);
-        waitFor = CEC.getResponseOpcode (msg);
+        waitFor = CEC.getResponseOpcode(msg);
     };
 
     NODECec.prototype.send = function (msg) {
@@ -414,7 +414,7 @@ function NODECec (clientName) {
             //i = i.toString(16);
             //adapter.log.debug('device: ' + i + ' ' + o.osd ? o.osd : o.vendor ? o.vendor : i);
             for (var j in o) {
-                //adapter.log.debug('devive.' + i + ': j: ' + j + ' =' + o[j]);
+                //adapter.log.debug('device.' + i + ': j: ' + j + ' =' + o[j]);
                 dev.dset(i, j, o[j]);
             }
             dev.setObjectName(i, o.osd ? o.osd : o.vendor ? o.vendor : i);

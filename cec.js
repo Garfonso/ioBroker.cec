@@ -691,7 +691,7 @@ function stateChange(id, state) {
             break;
         case commonStates.ACTIVE_SOURCE:
             if (state.val.length <= 1) {
-                var val = '3' + val + ':00';
+                var val = val + '0:00';
             } else {
                 var ar = state.val.split('.');
                 if (ar.length < 4) return;

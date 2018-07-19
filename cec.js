@@ -701,7 +701,7 @@ function stateChange(id, state) {
             //cec.send('as');
             break;
         case commonStates.RAW_COMMAND:
-            cec.sendCommand(state.val);
+            cec.send(state.val);
             break;
 
         case commonStates.POWER_TV:

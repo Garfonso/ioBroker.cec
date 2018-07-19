@@ -39,7 +39,7 @@ function toHex(n) {
 
 var adapter = utils.adapter({
     name: 'cec',
-    
+
     unload: function (callback) {
         try {
             callback();
@@ -752,7 +752,7 @@ function main() {
     createRootObjects();
 
     cec = new NODECec();
-    cec.start('-d 8 -t p -b r -o ' + orOSDName);
+    cec.start('-d 8 -t r -o ' + orOSDName);
 
     adapter.subscribeStates('*');
 }

@@ -671,7 +671,7 @@ var commonStates = {
     RAW_COMMAND: 'common.raw-command'
 };
 
-
+var cecCommandRexExp = /^[a-fA-F0-9]{2}(:[a-fA-F0-9]{2})*$/;
 function stateChange(id, state) {
 
     if (id.indexOf(adapter.namespace) !== 0) return;
@@ -703,7 +703,11 @@ function stateChange(id, state) {
             //cec.send('as');
             break;
         case commonStates.RAW_COMMAND:
-            cec.send(state.val);
+            if (cecCommandRexExp.test(state.val)) {
+                cec.send("tx " + state.val);
+            } else {
+                cec.send(state.val);
+            }
             break;
 
         case commonStates.POWER_TV:

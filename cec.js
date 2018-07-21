@@ -692,15 +692,19 @@ function stateChange(id, state) {
             //"tx 40 44 43"
             break;
         case commonStates.ACTIVE_SOURCE:
-            if (state.val.length <= 1) {
-                var val = val + '0:00';
+            if (typeof state.val === "string") { //somehow I often get a number 0 in case of shutdown.
+                if (state.val.length <= 1) {
+                    var val = val + '0:00';
+                } else {
+                    var ar = state.val.split('.');
+                    if (ar.length < 4) return;
+                    var val = ar[0] + ar[1] + ':' + ar[2] + ar[3];
+                }
+                cec.send('tx 5f:82:' + val)
+                //cec.send('as');
             } else {
-                var ar = state.val.split('.');
-                if (ar.length < 4) return;
-                var val = ar[0] + ar[1] + ':' + ar[2] + ar[3];
+                adapter.log.debug("Got val: " + state.val + " type: " + typeof state.val + " not string -> ignore.");
             }
-            cec.send('tx 5f:82:' + val)
-            //cec.send('as');
             break;
         case commonStates.RAW_COMMAND:
             if (cecCommandRexExp.test(state.val)) {

@@ -1,24 +1,29 @@
 ![Logo](admin/cec.png)
-### ioBroker.cec
+# ioBroker.cec
+=============================
 
 Adapter for HDMI CEC
 
-#### Info
+## Info
 Early alpha release, just now only working on Raspberry Pi.
 
-#### Requirements
+## Requirements
 cec-client have to be installed. Install the client from [here] (https://github.com/Pulse-Eight/libcec) 
 and follow the install instruction in the [readme] (https://github.com/Pulse-Eight/libcec/blob/master/README.md) of the libcec project.
 The readme has a special section for the Raspberry Pi.
 
 Or you can try this simple [script] (/install-libcec.sh/) as root.
 
-#### Installation
+## Installation
 Execute the following command in the iobroker root directory (e.g. in /opt/iobroker)
 ```
 npm install iobroker.ece 
 ```
-### License
+## Changelog
+### 0.0.3 (2018.07.xx)
+* (garfonso) done something 
+
+## License
 The MIT License (MIT)
 
 Copyright (c) 2016 soef <soef@gmx.net>
